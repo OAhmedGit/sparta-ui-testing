@@ -5,6 +5,16 @@ describe 'testing the demoqa registration page' do
   before(:all) do
     @driver = SeleniumDemoReg.new
     @driver.access_registration_form
+    @password = '12345'
+    @about_me = 'My name is Osama.'
+    @username = 'oahmed'
+    @number = '07411614465'
+    @dob_m = '6'
+    @dob_d = '13'
+    @dob_y = '2018'
+    @country = 'Egypt'
+    @hobby = 'reading'
+    @marital_status = 'single'
   end
 
   context 'positive paths for the registration form and register' do
@@ -14,51 +24,64 @@ describe 'testing the demoqa registration page' do
     end
 
     it 'should accept a first name' do
-      pending
+      @driver.set_first_name_field(@driver.first_name)
+      expect(@driver.get_first_name_field_value).to be_kind_of(String)
+      expect(@driver.first_name_field_displayed).to be true
     end
 
     it 'should accept a last name' do
-      pending
+      @driver.set_last_name_field(@driver.last_name)
+      expect(@driver.get_last_name_field_value).to be_kind_of(String)
+      expect(@driver.last_name_field_displayed).to be true
     end
 
     it 'should accept a marital status selection of Single, Married, or Divorced' do
-      pending
+      @driver.select_marital_option(@marital_status)
     end
 
     it 'should accept a hobby status selection of Dance, Reading, or Cricket' do
-      pending
+      @driver.select_hobby_option(@hobby)
     end
 
     it 'should have a country default of Afhghanistan' do
-      pending
-    end
-
-    it 'accept a new DOB' do
-      pending
+      expect(@driver.get_selected_country).to eq 'Afghanistan'
     end
 
     it 'should accept a new country value' do
-      pending
+      @driver.country_dropdown_list_select(@country)
+    end
+
+    it 'accept a new DOB' do
+      @driver.dob_month_list_select(@dob_m)
+      @driver.dob_day_list_select(@dob_d)
+      @driver.dob_year_list_select(@dob_y)
     end
 
     it 'should accept a valid phone number' do
-      pending
+      @driver.set_phone_number_field(@number)
+      expect(@driver.get_phone_number_field_value).to be_kind_of(String)
+      expect(@driver.get_phone_number_field_value.length).to be_between(11,13)
     end
 
     it 'should accept a username' do
-      pending
+      @driver.set_user_name_field(@username)
+      expect(@driver.get_phone_number_field_value).to be_kind_of(String)
     end
 
     it 'should accept a about yourself text' do
-      pending
+      @driver.set_about_yourself_field(@about_me)
+      expect(@driver.get_about_yourself_value).to be_kind_of(String)
+
     end
 
     it 'should accept a password' do
-      pending
+      @driver.set_password_field(@password)
+      expect(@driver.get_password_value).to be_kind_of(String)
     end
 
     it 'should accept a password confirmation' do
-      pending
+      @driver.set_password_field(@password)
+      expect(@driver.get_password_value).to be_kind_of(String)
     end
 
   end

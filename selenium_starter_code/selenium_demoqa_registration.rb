@@ -31,7 +31,7 @@ class SeleniumDemoReg
     @chrome_driver = Selenium::WebDriver.for :chrome
     @first_name = Faker::Name.first_name
     @last_name = Faker::Name.last_name
-    @user_name = Faker::Name.first_name
+    @user_name = Faker::Name.unique.first_name
     @email = Faker::Internet.email
   end
 

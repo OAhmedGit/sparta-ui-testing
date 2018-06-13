@@ -88,17 +88,18 @@ describe 'testing the demoqa registration page' do
       expect(@driver.get_confirmation_password_value).to be_kind_of(String)
     end
 
-    it 'should clear cookies' do
-      @driver.clear_cookies
-    end
+    # it 'should clear cookies' do
+    #   @driver.clear_cookies
+    # end
 
     it 'should click submit' do
+      sleep 3
       @driver.click_submit
-      sleep 10
     end
 
     it 'should check registration is successful' do
       expect(@driver.check_registration_successful).to be true
+      sleep 5
     end
 
   end

@@ -159,8 +159,6 @@ class SeleniumDemoReg
           option.click
       end
     end
-
-    sleep 2
   end
 
   # Phone number field management - Difficulty Easy

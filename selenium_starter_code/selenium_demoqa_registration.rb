@@ -154,6 +154,8 @@ class SeleniumDemoReg
           option.click
       end
     end
+
+    sleep 2
   end
 
   # Phone number field management - Difficulty Easy
@@ -223,5 +225,5 @@ class SeleniumDemoReg
   def check_registration_successful
     @chrome_driver.find_element(:class, REGISTRATION_CONFIRMATION).displayed?
   end
-  
+
 end

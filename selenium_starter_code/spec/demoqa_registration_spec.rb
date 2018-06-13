@@ -11,7 +11,7 @@ describe 'testing the demoqa registration page' do
     @number = '07411614465'
     @dob_m = '6'
     @dob_d = '13'
-    @dob_y = '2018'
+    @dob_y = '2014'
     @country = 'Egypt'
     @hobby = 'reading'
     @marital_status = 'single'

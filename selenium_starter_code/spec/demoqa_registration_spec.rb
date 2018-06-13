@@ -5,9 +5,10 @@ describe 'testing the demoqa registration page' do
   before(:all) do
     @driver = SeleniumDemoReg.new
     @driver.access_registration_form
-    @password = '12345'
+    @password = '12345678'
     @about_me = 'My name is Osama.'
-    @username = 'oahmed'
+    @username = @driver.user_name
+    @email = @driver.email
     @number = '07411614465'
     @dob_m = '6'
     @dob_d = '13'
@@ -36,7 +37,7 @@ describe 'testing the demoqa registration page' do
     end
 
     it 'should accept a marital status selection of Single, Married, or Divorced' do
-      @driver.select_marital_option(@marital_status)
+      expect(@driver.select_marital_option(@marital_status)).to be true
     end
 
     it 'should accept a hobby status selection of Dance, Reading, or Cricket' do
@@ -68,10 +69,13 @@ describe 'testing the demoqa registration page' do
       expect(@driver.get_phone_number_field_value).to be_kind_of(String)
     end
 
+    it 'should accept an email' do
+      @driver.set_email_field(@email)
+    end
+
     it 'should accept a about yourself text' do
       @driver.set_about_yourself_field(@about_me)
       expect(@driver.get_about_yourself_value).to be_kind_of(String)
-
     end
 
     it 'should accept a password' do
@@ -80,8 +84,21 @@ describe 'testing the demoqa registration page' do
     end
 
     it 'should accept a password confirmation' do
-      @driver.set_password_field(@password)
-      expect(@driver.get_password_value).to be_kind_of(String)
+      @driver.set_confirmation_password_field(@password)
+      expect(@driver.get_confirmation_password_value).to be_kind_of(String)
+    end
+
+    it 'should click submit' do
+      @driver.click_submit
+      sleep 10
+    end
+
+    it 'should check registration is successful' do
+      expect(@driver.check_registration_successful).to be true
+    end
+
+    it 'should clear cookies' do
+      @driver.clear_cookies
     end
 
   end

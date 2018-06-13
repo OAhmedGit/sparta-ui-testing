@@ -3,7 +3,7 @@ require 'faker'
 
 class SeleniumDemoReg
 
-  attr_accessor :first_name, :last_name
+  attr_accessor :first_name, :last_name, :user_name, :email
 
   # page_url
   PAGE_URL = 'http://demoqa.com/registration/'
@@ -31,6 +31,8 @@ class SeleniumDemoReg
     @chrome_driver = Selenium::WebDriver.for :chrome
     @first_name = Faker::Name.first_name
     @last_name = Faker::Name.last_name
+    @user_name = Faker::Name.first_name
+    @email = Faker::Internet.email
   end
 
   def access_registration_form
@@ -77,10 +79,13 @@ class SeleniumDemoReg
     case marital_status
     when 'single'
       @chrome_driver.find_element(:xpath, '//input[@value="single"]').click
+      @chrome_driver.find_element(:xpath, '//input[@value="single"]').selected?
     when 'married'
       @chrome_driver.find_element(:xpath, '//input[@value="married"]').click
+      @chrome_driver.find_element(:xpath, '//input[@value="married"]').selected?
     when 'divorced'
       @chrome_driver.find_element(:xpath, '//input[@value="divorced"]').click
+      @chrome_driver.find_element(:xpath, '//input[@value="divorced"]').selected?
     end
   end
 
@@ -224,6 +229,10 @@ class SeleniumDemoReg
 
   def check_registration_successful
     @chrome_driver.find_element(:class, REGISTRATION_CONFIRMATION).displayed?
+  end
+
+  def clear_cookies
+    @chrome_driver.manage.delete_all_cookies
   end
 
 end

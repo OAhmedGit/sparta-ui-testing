@@ -1,21 +1,26 @@
 require 'spec_helper'
+# require_relative '../random_generator/random_generator_super_class'
 
 describe SeleniumSuperClass do
 
   before(:all) do
     @driver = SeleniumSuperClass.new.selenium_demoqa
     @driver.access_registration_form
-    @password = '12345678'
-    @about_me = 'My name is Osama.'
-    @username = @driver.user_name
-    @email = @driver.email
-    @number = '07411614465'
-    @dob_m = '6'
-    @dob_d = '13'
-    @dob_y = '2014'
-    @country = 'Egypt'
-    @hobby = 'reading'
-    @marital_status = 'single'
+
+    @random_generator = RandomGeneratorSuperClass.new.random_generator
+    @first_name = @random_generator.first_name
+    @last_name = @random_generator.last_name
+    @password = @random_generator.password
+    @about_me = @random_generator.about
+    @username = @random_generator.user_name
+    @email = @random_generator.email
+    @number = @random_generator.phone_number
+    @dob_m = @random_generator.month
+    @dob_d = @random_generator.day
+    @dob_y = @random_generator.year
+    @country = @random_generator.country
+    @hobby = @random_generator.hobby
+    @marital_status = @random_generator.marital_status
   end
 
   context 'positive paths for the registration form and register' do
@@ -25,13 +30,13 @@ describe SeleniumSuperClass do
     end
 
     it 'should accept a first name' do
-      @driver.set_first_name_field(@driver.first_name)
+      @driver.set_first_name_field(@first_name)
       expect(@driver.get_first_name_field_value).to be_kind_of(String)
       expect(@driver.first_name_field_displayed).to be true
     end
 
     it 'should accept a last name' do
-      @driver.set_last_name_field(@driver.last_name)
+      @driver.set_last_name_field(@last_name)
       expect(@driver.get_last_name_field_value).to be_kind_of(String)
       expect(@driver.last_name_field_displayed).to be true
     end
@@ -93,7 +98,9 @@ describe SeleniumSuperClass do
     end
 
     it 'should click submit' do
+      sleep 5
       @driver.click_submit
+      sleep 10
     end
 
     it 'should check registration is successful' do

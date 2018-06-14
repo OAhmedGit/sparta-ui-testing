@@ -1,4 +1,4 @@
-require_relative '../random_generator'
+require_relative '../random_generator_super_class'
 require 'faker'
 
 RSpec.configure do |config|

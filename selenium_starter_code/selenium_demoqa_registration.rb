@@ -4,7 +4,7 @@ require_relative 'random_generator/random_generator'
 
 class SeleniumDemoReg
 
-  attr_accessor :first_name, :last_name, :user_name, :email
+  # attr_accessor :first_name, :last_name, :user_name, :email
 
   # page_url
   PAGE_URL = 'http://demoqa.com/registration/'
@@ -32,11 +32,11 @@ class SeleniumDemoReg
     # set up driver
     @chrome_driver = Selenium::WebDriver.for :chrome
 
-    @random_generator = RandomGenerator.new
-    @first_name = @random_generator.first_name
-    @last_name = @random_generator.last_name
-    @user_name = @random_generator.user_name
-    @email = @random_generator.email
+    # @random_generator = RandomGenerator.new
+    # @first_name = @random_generator.first_name
+    # @last_name = @random_generator.last_name
+    # @user_name = @random_generator.user_name
+    # @email = @random_generator.email
   end
 
   def access_registration_form
@@ -102,8 +102,8 @@ class SeleniumDemoReg
       @chrome_driver.find_element(:xpath, '//input[@value="dance"]').click
     when 'reading'
       @chrome_driver.find_element(:xpath, '//input[@value="reading"]').click
-    when 'cricket'
-      @chrome_driver.find_element(:xpath, '//input[@value="cricket"]').click
+    when 'cricket '
+      @chrome_driver.find_element(:xpath, '//input[@value="cricket "]').click
     end
   end
 

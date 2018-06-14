@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'testing the demoqa registration page' do
 
   before(:all) do
-    @driver = SeleniumDemoReg.new
+    @driver = SuperClass.new.selenium_demoqa
     @driver.access_registration_form
     @password = '12345678'
     @about_me = 'My name is Osama.'
@@ -88,12 +88,11 @@ describe 'testing the demoqa registration page' do
       expect(@driver.get_confirmation_password_value).to be_kind_of(String)
     end
 
-    # it 'should clear cookies' do
-    #   @driver.clear_cookies
-    # end
+    it 'should clear cookies' do
+      @driver.clear_cookies
+    end
 
     it 'should click submit' do
-      sleep 3
       @driver.click_submit
     end
 

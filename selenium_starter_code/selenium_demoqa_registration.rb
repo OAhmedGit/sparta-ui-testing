@@ -1,5 +1,6 @@
 require 'selenium-webdriver'
 require 'faker'
+require_relative 'random_generator/random_generator'
 
 class SeleniumDemoReg
 
@@ -7,6 +8,7 @@ class SeleniumDemoReg
 
   # page_url
   PAGE_URL = 'http://demoqa.com/registration/'
+
   # Page field
   FIRST_NAME_FIELD =  'name_3_firstname' # id
   LAST_NAME_FIELD =  'name_3_lastname' # id
@@ -29,10 +31,12 @@ class SeleniumDemoReg
   def initialize
     # set up driver
     @chrome_driver = Selenium::WebDriver.for :chrome
-    @first_name = Faker::Name.first_name
-    @last_name = Faker::Name.last_name
-    @user_name = Faker::Name.unique.first_name
-    @email = Faker::Internet.email
+
+    @random_generator = RandomGenerator.new
+    @first_name = @random_generator.first_name
+    @last_name = @random_generator.last_name
+    @user_name = @random_generator.user_name
+    @email = @random_generator.email
   end
 
   def access_registration_form

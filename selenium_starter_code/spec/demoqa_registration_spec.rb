@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe 'testing the demoqa registration page' do
+describe SeleniumSuperClass do
 
   before(:all) do
-    @driver = SuperClass.new.selenium_demoqa
+    @driver = SeleniumSuperClass.new.selenium_demoqa
     @driver.access_registration_form
     @password = '12345678'
     @about_me = 'My name is Osama.'

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'testing the random generator' do
+describe RandomGenerator do
 
     before(:all) do
         @random_generator_instance = RandomGenerator.new

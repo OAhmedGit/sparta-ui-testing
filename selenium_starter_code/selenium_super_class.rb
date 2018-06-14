@@ -1,6 +1,7 @@
 require_relative 'selenium_demoqa_registration'
 
-class SuperClass
+class SeleniumSuperClass
+    
     def selenium_demoqa
         SeleniumDemoReg.new
     end
